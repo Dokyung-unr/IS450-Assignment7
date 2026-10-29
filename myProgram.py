@@ -58,7 +58,7 @@ def main():
     print("You have 5 free space coins.")
 
     while True:
-        print("\nCoins left:", coins)
+        print("Coins left:\n", coins)
         print("1. Mystery objects")
         print("2. Impossible snacks")
         print("3. Future technology")
@@ -73,7 +73,7 @@ def main():
             if coins == 0:
                 print("You are out of space coins!")
             elif len(PRODUCTS[choice]) == 0:
-                print("SOld out! Please choose another category.")
+                print("Sold out! Please choose another category.")
             else:
                 prize = dispense_product(choice)
                 bag.append(prize)
