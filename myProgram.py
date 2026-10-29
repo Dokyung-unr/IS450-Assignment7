@@ -26,6 +26,7 @@ def get_input(prompt):
 
 def dispense_product(button):
     product = random.choice(PRODUCTS[button])
+    PRODUCTS[button].remove(product)
     effect = random.choice(EFFECTS)
     return product + " - " + effect
 
@@ -71,11 +72,19 @@ def main():
         if choice in PRODUCTS:
             if coins == 0:
                 print("You are out of space coins!")
+            elif len(PRODUCTS[choice]) == 0:
+                print("SOld out! Please choose another category.")
             else:
                 prize = dispense_product(choice)
                 bag.append(prize)
                 coins = coins - 1
                 print("\nYou received: " + prize)
+                
+                if coins == 0:
+                    print("You used all 5 space coins!")
+                    show_bag(bag)
+                    print("Thanks for playing!")
+                    break
 
         elif choice == "4":
             show_bag(bag)
